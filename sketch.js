@@ -15,37 +15,40 @@ function setup(){
 }
 
 function draw(){
-
+    
 }
 
 function HSBconvert(h_,s_,b_){
     h_=radians(h_);
     s_/=100;
-    b_/=100;
     map(b_,0,100,0,255);
     console.log("h_: "+h_);
     console.log("s_: "+s_);
     console.log("b_: "+b_);
+    if(h_ < 0) {
+        h_ += 2*PI;
+        console.log("h_: "+h_);
+    }
     var newVals=[0,0,0];
     var i = floor((3*h_)/PI);
     var f = ((3*h_)/PI)-i;
-
+    
     var p = b_*(1-s_);
     var q = b_*(1-s_*f);
     var t = b_*(1-s_*(1-f));
-
+    
     console.log("P: "+p);
     console.log("Q: "+q);
     console.log("T: "+t);
 
     console.log("I: " +i);
-
-    b_=round(b_ * 255);
-    p=round(p * 255);
-    q=round(q * 255)
-    t=round(t * 255);
-
-
+    
+    b_=round(b_);
+    p=round(p);
+    q=round(q)
+    t=round(t);
+    
+    
     if(i==0){
         newVals=[b_,t,p];
     }
